@@ -19,7 +19,7 @@ const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogni
 if(SpeechRecognition){
     console.log("Your Browser supports speech Recognition");
     searchForm.insertAdjacentHTML("beforeend", '<button class=" btn-outline-dark" type="button" fill #fff><i class="fas fa-microphone"></i></button><br><br>');
-    searchForm.insertAdjacentHTML("beforeend",'<h5>Comandos: <b>*activar con voz*</b></h5>');
+    searchForm.insertAdjacentHTML("beforeend",'<h5>Comandos: <b>*activar con voz*</b><br>Al dar click en el boton se debe decir al microfono "Comenzar" esperar unos segundos y podra ejecutar cualquier comando que guste</h5>');
     searchForm.insertAdjacentHTML("beforeend",'<h5>Desvanece: <b>La imagen se transparenta</b></h5>');
     searchForm.insertAdjacentHTML("beforeend",'<h5>Reaparece: <b>La imagen se solidifica</b></h5>');
     searchForm.insertAdjacentHTML("beforeend",'<h5>Agranda: <b>La imagen se agranda un poco</b></h5>');
