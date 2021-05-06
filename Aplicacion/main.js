@@ -31,7 +31,7 @@ if(SpeechRecognition){
     searchForm.insertAdjacentHTML("beforeend",'<h5>Izquierda: <b>La imagen se mueve a la izquierda</b></h5>');
     searchForm.insertAdjacentHTML("beforeend",'<h5>Despegar: <b>La imagen simula el movimiento de un choete</b></h5>');
     searchForm.insertAdjacentHTML("beforeend",'<h5>Detener microfono: <b>La grabacion del microfono se detiene</b></h5>');
-    searchForm.insertAdjacentHTML("beforeend",'<h5>Cerrar sitio: <b>El sitio se cierra</h5>');
+    searchForm.insertAdjacentHTML("beforeend",'<h5>Salir del sitio: <b>El sitio se cierra</h5>');
     const micBtn = searchForm.querySelector("button");
     const micIcon = micBtn.querySelector("i");
 
@@ -74,170 +74,169 @@ if(SpeechRecognition){
             recognition.stop();
         }else if(!searchFormInput.value){
             searchFormInput.value = transcript;
-        }else if(transcript.toLowerCase().trim()==="Cerrar sitio"){//salir
-            var pregunta=confirm('Seguro que quieres salir del sitio actual?'); 
-                if(pregunta==true){
-                    window.close();
-                }else{
+        }else{
+            if(transcript.toLowerCase().trim()==="salir del sitio"){//busca
+                var opcion = confirm("Se a iniciado el comando 'Salir del sitio', desea continuar?");
+     
+                 if (opcion == true) { 
+                    window.close();     
+                } else {
                     mensaje = "No";
                 }
-        }else if(transcript.toLowerCase().trim()==="desvanece"){
-
-            var anim= just.animate({
-                targets: ".imagen",
-                duration: 5000,
-                web: {
-                  opacity:[1,0]}
-            });
-            anim.play();
-            just.tools.player(anim);
-        }else if(transcript.toLowerCase().trim()==="reaparece"){
-            var anim= just.animate({
-                targets: ".imagen",
-                duration: 5000,
-                web: {
-                    transform:[
-                        {offset: 0, value: "scale(1,1)"}
-                    ],
-                    opacity:[0,1]
-                }
-            });
-            anim.play();
-            just.tools.player(anim);
-        }else if(transcript.toLowerCase().trim()==="agranda"){
-
-            var anim= just.animate({
-                targets: ".imagen",
-                duration: 8500,
-                web: {
-                    transform: [
-                        { offset: 0, value: "scale(1, 1)" },
-                        { offset: 0.1, value: "scale(2, 2)" },
-                        { offset: 0.2, value: "scale(3, 3)" },
-                        { offset: 0.3, value: "scale(4, 4)" },
-                        { offset: 0.4, value: "scale(5, 5)" },
-                        { offset: 0.5, value: "scale(4, 4)" },
-                        { offset: 0.5, value: "scale(3, 3)" },
-                        { offset: 0.5, value: "scale(2, 2)" },
-                        { offset: 0.5, value: "scale(1, 1)" }
-                     ]
-                }
-            });
-            anim.play();
-            just.tools.player(anim);
-        }else if(transcript.toLowerCase().trim()==="reducir"){
-
-            var anim= just.animate({
-                targets: ".imagen",
-                duration: 8500,
-                web: {
-                    transform: [
-                        { offset: 0, value: "scale(.8, .8)" },
-                        { offset: 0.1, value: "scale(.5, .5)" },
-                        { offset: 0.2, value: "scale(.3, .3)" },
-                        { offset: 0.3, value: "scale(.1, .1)" },
-                        { offset: 0.4, value: "scale(.0, .0)" },
-                        { offset: 0.5, value: "scale(.1, .1)" },
-                        { offset: 0.5, value: "scale(.3, .3)" },
-                        { offset: 0.5, value: "scale(.4, .4)" },
-                        { offset: 0.5, value: "scale(1, 1)" }
-                     ]
-                }
-            });
-            anim.play();
-            just.tools.player(anim);
-        }else if(transcript.toLowerCase().trim()==="explota"){
-
-            var anim= just.animate({
-                targets: ".imagen",
-                duration: 4500,
-                web: {
-                    transform: [
-                        { offset: 0, value: "scale(1, 1)" },
-                        { offset: 0.1, value: "scale(2, 2)" },
-                        { offset: 0.2, value: "scale(3, 3)" },
-                        { offset: 0.3, value: "scale(4, 4)" },
-                        { offset: 0.4, value: "scale(5, 5)" },
-                        { offset: 0.5, value: "scale(6, 6)" },
-                        { offset: 0.5, value: "scale(7, 7)" },
-                        { offset: 0.5, value: "scale(8, 8)" },
-                        { offset: 0.5, value: "scale(9, 9)" },
-                        { offset: 0.5, value: "scale(20, 20)" }
-                     ],
-                    opacity: [1,0]
-                }
-            });
-            anim.play();
-            just.tools.player(anim);
-        }else if(transcript.toLowerCase().trim()==="arriba"){
-            var anim= just.animate({
-                targets: ".imagen",
-                duration: 9000,
-                web: {
-                    transform: [
-                        "translateY(0px)","translateY(-150px)",
-                        "translateY(-150px)","translateY(0px)"
-                    ]
-                }
-            });
-            anim.play();
-            just.tools.player(anim);
-        }else if(transcript.toLowerCase().trim()==="abajo"){
-            var anim= just.animate({
-                targets: ".imagen",
-                duration: 9000,
-                web: {
-                    transform: [
-                        "translateY(0px)","translateY(150px)",
-                        "translateY(150px)","translateY(0px)"
-                    ]
-                }
-            });
-            anim.play();
-            just.tools.player(anim);
-        }else if(transcript.toLowerCase().trim()==="derecha"){
-            var anim= just.animate({
-                targets: ".imagen",
-                duration: 9000,
-                web: {
-                    transform: [
-                        "translateX(0px)","translateX(150px)",
-                        "translateX(150px)","translateX(0px)"
-                    ]
-                }
-            });
-            anim.play();
-            just.tools.player(anim);
-        }else if(transcript.toLowerCase().trim()==="izquierda"){
-            var anim= just.animate({
-                targets: ".imagen",
-                duration: 9000,
-                web: {
-                    transform: [
-                        "translateX(150px)","translateX(0px)",
-                        "translateX(0px)","translateX(150px)"
-                    ]
-                }
-            });
-            anim.play();
-            just.tools.player(anim);
-        }else if(transcript.toLowerCase().trim()==="despegar"){
-            var anim= just.animate({
-                targets: ".imagen",
-                duration: 1000,
-                web: {
-                    transform: [
-                        "translateY(0px)","translateY(40px)",
-                        "translateY(40px)","translateY(-800px)"
-                    ]
-                }
-            });
-            anim.play();
-            just.tools.player(anim);
+            }else if(transcript.toLowerCase().trim()==="desvanece"){
+                var anim= just.animate({
+                    targets: ".imagen",
+                    duration: 5000,
+                    web: {
+                      opacity:[1,0]}
+                });
+                anim.play();
+                just.tools.player(anim);
+            }else if(transcript.toLowerCase().trim()==="reaparece"){
+                var anim= just.animate({
+                    targets: ".imagen",
+                    duration: 5000,
+                    web: {
+                        transform:[
+                            {offset: 0, value: "scale(1,1)"}
+                        ],
+                        opacity:[0,1]
+                    }
+                });
+                anim.play();
+                just.tools.player(anim);
+            }else if(transcript.toLowerCase().trim()==="agranda"){
+                var anim= just.animate({
+                    targets: ".imagen",
+                    duration: 8500,
+                    web: {
+                        transform: [
+                            { offset: 0, value: "scale(1, 1)" },
+                            { offset: 0.1, value: "scale(2, 2)" },
+                            { offset: 0.2, value: "scale(3, 3)" },
+                            { offset: 0.3, value: "scale(4, 4)" },
+                            { offset: 0.4, value: "scale(5, 5)" },
+                            { offset: 0.5, value: "scale(4, 4)" },
+                            { offset: 0.5, value: "scale(3, 3)" },
+                            { offset: 0.5, value: "scale(2, 2)" },
+                            { offset: 0.5, value: "scale(1, 1)" }
+                         ]
+                    }
+                });
+                anim.play();
+                just.tools.player(anim);
+            }else if(transcript.toLowerCase().trim()==="reducir"){
+                var anim= just.animate({
+                    targets: ".imagen",
+                    duration: 8500,
+                    web: {
+                        transform: [
+                            { offset: 0, value: "scale(.8, .8)" },
+                            { offset: 0.1, value: "scale(.5, .5)" },
+                            { offset: 0.2, value: "scale(.3, .3)" },
+                            { offset: 0.3, value: "scale(.1, .1)" },
+                            { offset: 0.4, value: "scale(.0, .0)" },
+                            { offset: 0.5, value: "scale(.1, .1)" },
+                            { offset: 0.5, value: "scale(.3, .3)" },
+                            { offset: 0.5, value: "scale(.4, .4)" },
+                            { offset: 0.5, value: "scale(1, 1)" }
+                         ]
+                    }
+                });
+                anim.play();
+                just.tools.player(anim);
+            }else if(transcript.toLowerCase().trim()==="explota"){
+                var anim= just.animate({
+                    targets: ".imagen",
+                    duration: 4500,
+                    web: {
+                        transform: [
+                            { offset: 0, value: "scale(1, 1)" },
+                            { offset: 0.1, value: "scale(2, 2)" },
+                            { offset: 0.2, value: "scale(3, 3)" },
+                            { offset: 0.3, value: "scale(4, 4)" },
+                            { offset: 0.4, value: "scale(5, 5)" },
+                            { offset: 0.5, value: "scale(6, 6)" },
+                            { offset: 0.5, value: "scale(7, 7)" },
+                            { offset: 0.5, value: "scale(8, 8)" },
+                            { offset: 0.5, value: "scale(9, 9)" },
+                            { offset: 0.5, value: "scale(20, 20)" }
+                         ],
+                        opacity: [1,0]
+                    }
+                });
+                anim.play();
+                just.tools.player(anim);
+            }else if(transcript.toLowerCase().trim()==="arriba"){
+                var anim= just.animate({
+                    targets: ".imagen",
+                    duration: 9000,
+                    web: {
+                        transform: [
+                            "translateY(0px)","translateY(-150px)",
+                            "translateY(-150px)","translateY(0px)"
+                        ]
+                    }
+                });
+                anim.play();
+                just.tools.player(anim);
+            }else if(transcript.toLowerCase().trim()==="abajo"){
+                var anim= just.animate({
+                    targets: ".imagen",
+                    duration: 9000,
+                    web: {
+                        transform: [
+                            "translateY(0px)","translateY(150px)",
+                            "translateY(150px)","translateY(0px)"
+                        ]
+                    }
+                });
+                anim.play();
+                just.tools.player(anim);
+            }else if(transcript.toLowerCase().trim()==="derecha"){
+                var anim= just.animate({
+                    targets: ".imagen",
+                    duration: 9000,
+                    web: {
+                        transform: [
+                            "translateX(0px)","translateX(150px)",
+                            "translateX(150px)","translateX(0px)"
+                        ]
+                    }
+                });
+                anim.play();
+                just.tools.player(anim);
+            }else if(transcript.toLowerCase().trim()==="izquierda"){
+                var anim= just.animate({
+                    targets: ".imagen",
+                    duration: 9000,
+                    web: {
+                        transform: [
+                            "translateX(150px)","translateX(0px)",
+                            "translateX(0px)","translateX(150px)"
+                        ]
+                    }
+                });
+                anim.play();
+                just.tools.player(anim);
+            }else if(transcript.toLowerCase().trim()==="despegar"){
+                var anim= just.animate({
+                    targets: ".imagen",
+                    duration: 1000,
+                    web: {
+                        transform: [
+                            "translateY(0px)","translateY(40px)",
+                            "translateY(40px)","translateY(-800px)"
+                        ]
+                    }
+                });
+                anim.play();
+                just.tools.player(anim);
+            }else{
+                searchFormInput.value = transcript;
+            }
         }
-
-        
-        }
+    }
     }
 
     
