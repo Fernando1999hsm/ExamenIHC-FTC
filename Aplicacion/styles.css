@@ -1,8 +1,4 @@
-body{
-  background-color: #000000;
-  padding: 0px;
-  margin: 0px;
-}
+
 #gradient
 {
   width: 100%;
@@ -51,12 +47,12 @@ div{
 #CajaAzul{
   background-color: blue;
   float: right;
-  width: 45%;
+  width: 50%;
   height: 600px;
   margin: 30px;
   text-align: center;
   border-radius: 40px;
   color: white;
-  align-items: right;
+  align-items: center;
   padding: 50px;
 }
