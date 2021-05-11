@@ -12,6 +12,7 @@ function previewImage(){
 
 const searchForm = document.querySelector("#search-form");
 const searchFormInput = searchForm.querySelector("input");
+const searchFormLabel = searchForm.querySelector("label");
 
 
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -19,19 +20,8 @@ const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogni
 if(SpeechRecognition){
     console.log("Your Browser supports speech Recognition");
     searchForm.insertAdjacentHTML("beforeend", '<button class=" btn-outline-dark" type="button" fill #fff><i class="fas fa-microphone"></i></button><br><br>');
-    searchForm.insertAdjacentHTML("beforeend",'<h5>Comandos: <b>*activar con voz*</b><br>Al dar click en el boton se debe decir al microfono "Comenzar" esperar unos segundos y podra ejecutar cualquier comando que guste</h5>');
-    searchForm.insertAdjacentHTML("beforeend",'<h5>Desvanece: <b>La imagen se transparenta</b></h5>');
-    searchForm.insertAdjacentHTML("beforeend",'<h5>Reaparece: <b>La imagen se solidifica</b></h5>');
-    searchForm.insertAdjacentHTML("beforeend",'<h5>Agranda: <b>La imagen se agranda un poco</b></h5>');
-    searchForm.insertAdjacentHTML("beforeend",'<h5>Reducir: <b>La imagen se hace mas pequeña</b></h5>');
-    searchForm.insertAdjacentHTML("beforeend",'<h5>Explota: <b>La imagen se agranda y desaparece</b></h5>');
-    searchForm.insertAdjacentHTML("beforeend",'<h5>Arriba: <b>La imagen se mueve hacia arriba</b></h5>');
-    searchForm.insertAdjacentHTML("beforeend",'<h5>Abajo: <b>La imagen se mueve hacia abajo</b></h5>');
-    searchForm.insertAdjacentHTML("beforeend",'<h5>Derecha: <b>La imagen se mueve a la derecha</b></h5>');
-    searchForm.insertAdjacentHTML("beforeend",'<h5>Izquierda: <b>La imagen se mueve a la izquierda</b></h5>');
-    searchForm.insertAdjacentHTML("beforeend",'<h5>Despegar: <b>La imagen simula el movimiento de un choete</b></h5>');
-    searchForm.insertAdjacentHTML("beforeend",'<h5>Detener microfono: <b>La grabacion del microfono se detiene</b></h5>');
-    searchForm.insertAdjacentHTML("beforeend",'<h5>Salir del sitio: <b>El sitio se cierra</h5>');
+    searchForm.insertAdjacentHTML("beforeend",'<h5>Comandos: <b>*activar con voz*</b><br>Al dar click en el boton se debe decir al microfono "INICIO" esperar unos segundos y podra ejecutar cualquier comando que guste, si tiene duda con los comandos, diga "ayuda del sitio" y se le direccionara a una pagina donde encontrara mas informacion sobre los Comandos</h5>');
+    searchForm.insertAdjacentHTML("beforeend",'<h1>Historial de Animaciones:</h1>');
     const micBtn = searchForm.querySelector("button");
     const micIcon = micBtn.querySelector("i");
 
@@ -83,7 +73,10 @@ if(SpeechRecognition){
                 } else {
                     mensaje = "No";
                 }
+            }else if(transcript.toLowerCase().trim()==="ayuda del sitio"){
+                window.open('ayuda.html');
             }else if(transcript.toLowerCase().trim()==="desvanece"){
+                searchForm.insertAdjacentHTML("beforeend", '<h3>Ejecutaste la animacion desvanece</h3>');
                 var anim= just.animate({
                     targets: ".imagen",
                     duration: 5000,
@@ -93,6 +86,7 @@ if(SpeechRecognition){
                 anim.play();
                 just.tools.player(anim);
             }else if(transcript.toLowerCase().trim()==="reaparece"){
+                searchForm.insertAdjacentHTML("beforeend", '<h3>Ejecutaste la animacion reaparece</h3>');
                 var anim= just.animate({
                     targets: ".imagen",
                     duration: 5000,
@@ -106,6 +100,7 @@ if(SpeechRecognition){
                 anim.play();
                 just.tools.player(anim);
             }else if(transcript.toLowerCase().trim()==="agranda"){
+                searchForm.insertAdjacentHTML("beforeend", '<h3>Ejecutaste la animacion agranda</h3>');
                 var anim= just.animate({
                     targets: ".imagen",
                     duration: 8500,
@@ -126,6 +121,7 @@ if(SpeechRecognition){
                 anim.play();
                 just.tools.player(anim);
             }else if(transcript.toLowerCase().trim()==="reducir"){
+                searchForm.insertAdjacentHTML("beforeend", '<h3>Ejecutaste la animacion reducir</h3>');
                 var anim= just.animate({
                     targets: ".imagen",
                     duration: 8500,
@@ -146,6 +142,7 @@ if(SpeechRecognition){
                 anim.play();
                 just.tools.player(anim);
             }else if(transcript.toLowerCase().trim()==="explota"){
+                searchForm.insertAdjacentHTML("beforeend", '<h1>Ejecutaste la animacion explota</h1>');
                 var anim= just.animate({
                     targets: ".imagen",
                     duration: 4500,
@@ -168,6 +165,7 @@ if(SpeechRecognition){
                 anim.play();
                 just.tools.player(anim);
             }else if(transcript.toLowerCase().trim()==="arriba"){
+                searchForm.insertAdjacentHTML("beforeend", '<h3>Ejecutaste la animacion arriba</h3>');
                 var anim= just.animate({
                     targets: ".imagen",
                     duration: 9000,
@@ -181,6 +179,7 @@ if(SpeechRecognition){
                 anim.play();
                 just.tools.player(anim);
             }else if(transcript.toLowerCase().trim()==="abajo"){
+                searchForm.insertAdjacentHTML("beforeend", '<h3>Ejecutaste la animacion abajo</h3>');
                 var anim= just.animate({
                     targets: ".imagen",
                     duration: 9000,
@@ -194,6 +193,7 @@ if(SpeechRecognition){
                 anim.play();
                 just.tools.player(anim);
             }else if(transcript.toLowerCase().trim()==="derecha"){
+                searchForm.insertAdjacentHTML("beforeend", '<h3>Ejecutaste la animacion derecha</h3>');
                 var anim= just.animate({
                     targets: ".imagen",
                     duration: 9000,
@@ -207,6 +207,7 @@ if(SpeechRecognition){
                 anim.play();
                 just.tools.player(anim);
             }else if(transcript.toLowerCase().trim()==="izquierda"){
+                searchForm.insertAdjacentHTML("beforeend", '<h3>Ejecutaste la animacion izquierda</h3>');
                 var anim= just.animate({
                     targets: ".imagen",
                     duration: 9000,
@@ -220,6 +221,7 @@ if(SpeechRecognition){
                 anim.play();
                 just.tools.player(anim);
             }else if(transcript.toLowerCase().trim()==="despegar"){
+                searchForm.insertAdjacentHTML("beforeend", '<h1>Ejecutaste la animacion despegar</h1>');
                 var anim= just.animate({
                     targets: ".imagen",
                     duration: 1000,
@@ -234,6 +236,7 @@ if(SpeechRecognition){
                 just.tools.player(anim);
             }else{
                 searchFormInput.value = transcript;
+                searchFormLabel.value = transcript;
             }
         }
     }
