@@ -30,10 +30,16 @@
 <body id="gradient" >
 <div>
   <div clas="subirImagen" id="CajaRoja">
+    <div style="width: 50% padding: auto;">
+      <label class="control-label"><h2>Subir la imagen</h2></label><br>
+        <input type="file" placeholder="Sube una imagen local" aria-describedby="inputGroupFileAddon01" class="btn btn-danger custom-file-input" id="file" accept="image" onchange="previewImage()">
+    </div>
       <br>
-      <label class="control-label"><h1>Subir la imagen</h1></label>
-      <br>
-      <input type="file" class="custom-file-input" id="file" accept="image" onchange="previewImage()">
+      <div class="form-outline" style="width: auto; padding: auto;">
+        <input type="url" id="ImagenURL" class="form-control" />
+        <label class="form-label custom-file-label" for="typeURL" ><font color="white">Tambien puede ingresar la imagen por url</font></label>
+      </div>
+  </div>
   </div>
 
 <div class="float-start" id="izquierda">

@@ -10,6 +10,10 @@ function previewImage(){
     }
 }
 
+document.getElementById('ImagenURL').addEventListener("change", function(){ 
+    document.getElementById('img').src=this.value;
+});
+
 const searchForm = document.querySelector("#search-form");
 const searchFormInput = searchForm.querySelector("input");
 const searchFormLabel = searchForm.querySelector("label");
